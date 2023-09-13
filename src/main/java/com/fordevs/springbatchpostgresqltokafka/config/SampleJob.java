@@ -1,7 +1,7 @@
-package com.fordevs.config;
+package com.fordevs.springbatchpostgresqltokafka.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fordevs.postgresql.entity.InputStudent;
+import com.fordevs.springbatchpostgresqltokafka.postgresql.entity.InputStudent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

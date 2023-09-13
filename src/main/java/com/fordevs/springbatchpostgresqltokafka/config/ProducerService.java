@@ -1,4 +1,4 @@
-package com.fordevs.config;
+package com.fordevs.springbatchpostgresqltokafka.config;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

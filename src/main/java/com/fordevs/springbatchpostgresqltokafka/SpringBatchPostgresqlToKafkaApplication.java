@@ -1,4 +1,4 @@
-package com.fordevs;
+package com.fordevs.springbatchpostgresqltokafka;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
@@ -7,11 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableBatchProcessing
-@ComponentScan({"com.fordevs.config", "com.fordevs.postgresql"})
-public class SpringBatchApplication {
+@ComponentScan({"com.fordevs.springbatchpostgresqltokafka.config", "com.fordevs.springbatchpostgresqltokafka.postgresql"})
+public class SpringBatchPostgresqlToKafkaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBatchApplication.class, args);
+		SpringApplication.run(SpringBatchPostgresqlToKafkaApplication.class, args);
 	}
 
 }

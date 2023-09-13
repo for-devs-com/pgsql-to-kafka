@@ -9,14 +9,14 @@
 		<version>2.6.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>${project.groupId}</groupId>
-	<artifactId>spring-batch</artifactId>
+	<groupId>com.fordevs</groupId>
+	<artifactId>spring-batch-postgresql-to-kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-batch</name>
 	<description>spring-batch</description>
 	<properties>
 		<java.version>1.8</java.version>
-        <project.groupId>com.fordevs</project.groupId>
+
     </properties>
 	<dependencies>
 		<dependency>
