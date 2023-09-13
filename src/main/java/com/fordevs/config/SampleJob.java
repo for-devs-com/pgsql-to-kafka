@@ -33,16 +33,11 @@ import java.util.Properties;
 @Slf4j
 public class SampleJob {
 
-
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
-
-   /* @Autowired
-    @Qualifier("datasource")
-    private DataSource datasource;*/
 
     @Autowired
     @Qualifier("postgresdatasource")

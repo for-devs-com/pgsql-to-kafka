@@ -19,18 +19,6 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfig {
 	/**
-	 * Configura el DataSource Principal para la configuración
-	 * de la base de datos de Spring Batch.
-	 * @return DataSource.
-	 */
-	/*@Bean
-	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource datasource() {
-		return DataSourceBuilder.create().build();
-	}*/
-
-	/**
 	 * Configura el DataSource para la base de datos PostgreSQL.
 	 *
 	 * @return Un DataSource configurado para PostgreSQL.
