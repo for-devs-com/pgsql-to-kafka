@@ -1,17 +1,19 @@
 package com.fordevs.springbatchpostgresqltokafka.config;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fordevs.springbatchpostgresqltokafka.postgresql.entity.InputStudent;
+import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
+import com.fordevs.springbatchpostgresqltokafka.reader.CustomKafkaItemReader;
+import com.fordevs.springbatchpostgresqltokafka.services.ProducerService;
+import com.fordevs.springbatchpostgresqltokafka.writer.MongoDbItemWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JpaCursorItemReader;
-import org.springframework.batch.item.kafka.builder.KafkaItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -21,7 +23,6 @@ import org.springframework.context.annotation.Configuration;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Configuración de un de Spring Batch Job que útiliza Kafka y JPA.
@@ -49,21 +50,29 @@ public class SampleJob {
 
     @Autowired
     private KafkaProperties properties;
+    @Autowired
+    private CustomKafkaItemReader customKafkaItemReader;
+    @Autowired
+    private MongoDbItemWriter mongoDBItemWriter;
 
     /**
      * Configura el lector de elementos de Kafka.
      *
      * @return ItemReader para Kafka.
      */
-    @Bean
-    ItemReader<? extends InputStudent> kafkaItemReader() {
+    /*@Bean
+    ItemReader<? extends String> kafkaItemReader() {
         Properties props = new Properties();
         props.putAll(this.properties.buildConsumerProperties());
-        return new KafkaItemReaderBuilder<Long, InputStudent>()
-                .partitions(0).consumerProperties(props)
-                .name("student_reader").saveState(true)
-                .topic("student_topic").build();
-    }
+        CustomKafkaItemReader<Long, InputStudent> build = new KafkaItemReaderBuilder<Long, InputStudent>()
+                .partitions(0)
+                .consumerProperties(props)
+                .name("student_reader")
+                .saveState(true)
+                .topic("student_topic")
+                .build();
+        return build;
+    }*/
 
     /**
      * Configura el escritor de elementos de Kafka.
@@ -99,10 +108,21 @@ public class SampleJob {
             return jobBuilderFactory.get("First Chunk Job")
                     .incrementer(new RunIdIncrementer())
                     .start(chunkStep())
+                    .next(kafkaToMongoStep())
                     .build();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Bean
+    public Step kafkaToMongoStep() {
+        return stepBuilderFactory.get("kafkaToMongoStep")
+                .<InputStudent, InputStudent>chunk(1500) // Tamaño del chunk
+                .reader(customKafkaItemReader)
+                //.processor(dataTransformProcessor)
+                .writer(mongoDBItemWriter)
+                .build();
     }
     /**
      * Configura el Step de Spring Batch.

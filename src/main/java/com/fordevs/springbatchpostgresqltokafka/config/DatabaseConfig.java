@@ -39,7 +39,7 @@ public class DatabaseConfig {
 				new LocalContainerEntityManagerFactoryBean();
 		
 		lem.setDataSource(postgresdatasource());
-		lem.setPackagesToScan("com.fordevs.springbatchpostgresqltokafka.postgresql.entity");
+		lem.setPackagesToScan("com.fordevs.springbatchpostgresqltokafka.entity.postgresql");
 		lem.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		lem.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		lem.afterPropertiesSet();

@@ -1,5 +1,7 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpostgresqltokafka.services;
 
+import com.fordevs.springbatchpostgresqltokafka.config.KafkaConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import javax.annotation.PreDestroy;
  * @version 1.0
  */
 @Service
+@Slf4j
 public class ProducerService {
 
     /**
@@ -49,7 +52,7 @@ public class ProducerService {
         try {
             producer.send(new ProducerRecord<>(topic, message));
         } catch (Exception e) {
-            // Manejo de excepciones
+            log.error("Failed to send message to topic {}: {}", topic, e.getMessage());
         }
     }
 

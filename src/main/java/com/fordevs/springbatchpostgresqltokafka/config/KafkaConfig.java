@@ -1,13 +1,16 @@
 package com.fordevs.springbatchpostgresqltokafka.config;
 
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.core.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,12 +22,13 @@ import java.util.Map;
  * @version 1.0
  */
 @Configuration
+@EnableKafka
 public class KafkaConfig {
 
     /**
      * Dirección de los servidores de Kafka.
      */
-    @Value("${spring.kafka.bootstrap-servers}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
     /**
@@ -41,6 +45,20 @@ public class KafkaConfig {
         // ... otras configuraciones
 
         return new DefaultKafkaProducerFactory<>(configProps);
+    }
+
+    @Bean
+    public ConsumerFactory<String, InputStudent> consumerConfigs() {
+        Map<String, Object> configProps = new HashMap<>();
+        configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        //configProps.put(JsonDeserializer.VALUE_DEFAULT_TYPE, InputStudent.class.getName());
+        configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "students_group_id");
+        configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        // ... otras configuraciones
+
+        return new DefaultKafkaConsumerFactory<>(configProps);
     }
 
     /**

@@ -1,9 +1,10 @@
-package com.fordevs.springbatchpostgresqltokafka.postgresql.entity;
+package com.fordevs.springbatchpostgresqltokafka.entity.postgresql;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Builder
 @Data
+@Document(collection = "student")
 public class InputStudent {
 
 	@Id
-	private Long id;
+	private String id;
 
 	@Column(name = "first_name")
 	private String firstName;
