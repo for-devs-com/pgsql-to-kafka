@@ -50,7 +50,8 @@ public class ProducerService {
      */
     public void sendMessage(String topic, String message) {
         try {
-            producer.send(new ProducerRecord<>(topic, message));
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic, message);
+            producer.send(record);
         } catch (Exception e) {
             log.error("Failed to send message to topic {}: {}", topic, e.getMessage());
         }

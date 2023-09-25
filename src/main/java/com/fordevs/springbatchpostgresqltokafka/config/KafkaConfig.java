@@ -53,7 +53,6 @@ public class KafkaConfig {
         configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        //configProps.put(JsonDeserializer.VALUE_DEFAULT_TYPE, InputStudent.class.getName());
         configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "students_group_id");
         configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // ... otras configuraciones

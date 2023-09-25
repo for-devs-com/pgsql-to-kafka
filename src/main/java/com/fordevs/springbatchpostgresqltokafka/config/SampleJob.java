@@ -41,38 +41,14 @@ public class SampleJob {
     private StepBuilderFactory stepBuilderFactory;
 
     @Autowired
-    @Qualifier("postgresdatasource")
-    private DataSource postgresdatasource;
-
-    @Autowired
     @Qualifier("postgresqlEntityManagerFactory")
     private EntityManagerFactory postgresqlEntityManagerFactory;
 
-    @Autowired
-    private KafkaProperties properties;
     @Autowired
     private CustomKafkaItemReader customKafkaItemReader;
     @Autowired
     private MongoDbItemWriter mongoDBItemWriter;
 
-    /**
-     * Configura el lector de elementos de Kafka.
-     *
-     * @return ItemReader para Kafka.
-     */
-    /*@Bean
-    ItemReader<? extends String> kafkaItemReader() {
-        Properties props = new Properties();
-        props.putAll(this.properties.buildConsumerProperties());
-        CustomKafkaItemReader<Long, InputStudent> build = new KafkaItemReaderBuilder<Long, InputStudent>()
-                .partitions(0)
-                .consumerProperties(props)
-                .name("student_reader")
-                .saveState(true)
-                .topic("student_topic")
-                .build();
-        return build;
-    }*/
 
     /**
      * Configura el escritor de elementos de Kafka.
@@ -118,9 +94,8 @@ public class SampleJob {
     @Bean
     public Step kafkaToMongoStep() {
         return stepBuilderFactory.get("kafkaToMongoStep")
-                .<InputStudent, InputStudent>chunk(1500) // Tamaño del chunk
+                .<String, String>chunk(1500) // Tamaño del chunk
                 .reader(customKafkaItemReader)
-                //.processor(dataTransformProcessor)
                 .writer(mongoDBItemWriter)
                 .build();
     }
