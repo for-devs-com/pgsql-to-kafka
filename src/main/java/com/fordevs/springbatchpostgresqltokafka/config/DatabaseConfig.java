@@ -1,6 +1,7 @@
 package com.fordevs.springbatchpostgresqltokafka.config;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -33,13 +34,13 @@ public class DatabaseConfig {
 	 *
 	 * @return Un EntityManagerFactory configurado para PostgreSQL.
 	 */
-	@Bean
+	@Bean(name = "pgsqlEntityManagerFactory")
 	public EntityManagerFactory postgresqlEntityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lem = 
 				new LocalContainerEntityManagerFactoryBean();
 		
 		lem.setDataSource(postgresdatasource());
-		lem.setPackagesToScan("com.fordevs.springbatchpostgresqltokafka.postgresql.entity");
+		lem.setPackagesToScan("com.fordevs.springbatchpostgresqltokafka.entity.postgresql");
 		lem.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		lem.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		lem.afterPropertiesSet();

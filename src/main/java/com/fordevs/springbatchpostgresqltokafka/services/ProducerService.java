@@ -1,5 +1,6 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpostgresqltokafka.services;
 
+import com.fordevs.springbatchpostgresqltokafka.config.KafkaConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;

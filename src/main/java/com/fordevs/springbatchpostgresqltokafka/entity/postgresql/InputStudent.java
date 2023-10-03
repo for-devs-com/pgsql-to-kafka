@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka.postgresql.entity;
+package com.fordevs.springbatchpostgresqltokafka.entity.postgresql;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
