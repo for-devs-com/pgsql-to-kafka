@@ -9,11 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableBatchProcessing
 @ComponentScan({
         "com.fordevs.springbatchpostgresqltokafka.config",
-        "com.fordevs.springbatchpostgresqltokafka.entity.postgresql",
         "com.fordevs.springbatchpostgresqltokafka.reader",
-        "com.fordevs.springbatchpostgresqltokafka.services",
-        "com.fordevs.springbatchpostgresqltokafka.writer",
-        "com.fordevs.springbatchpostgresqltokafka.listeners",
+        "com.fordevs.springbatchpostgresqltokafka.writer"
 })
 public class SpringBatchPostgresqlToKafkaApplication {
 

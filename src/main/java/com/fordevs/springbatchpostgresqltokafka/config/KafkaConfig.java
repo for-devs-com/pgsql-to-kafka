@@ -1,6 +1,5 @@
 package com.fordevs.springbatchpostgresqltokafka.config;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -48,14 +47,13 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, InputStudent> consumerConfigs() {
+    public ConsumerFactory<String, Object> consumerConfigs() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        //configProps.put(JsonDeserializer.VALUE_DEFAULT_TYPE, InputStudent.class.getName());
         configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "students_group_id");
-        configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         // ... otras configuraciones
 
         return new DefaultKafkaConsumerFactory<>(configProps);

@@ -1,15 +1,6 @@
 package com.fordevs.springbatchpostgresqltokafka.config;
 
-import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 /**
  * Configuración de la base de datos.
  * @author Enoc.Velza | for-devs.com
@@ -22,18 +13,18 @@ public class DatabaseConfig {
 	 *
 	 * @return Un DataSource configurado para PostgreSQL.
 	 */
-	@Bean
+	/*@Bean
 	@ConfigurationProperties(prefix = "spring.postgresdatasource")
 	public DataSource postgresdatasource() {
 		return DataSourceBuilder.create().build();
-	}
+	}*/
 
 	/**
 	 * Configura el EntityManagerFactory para la base de datos PostgreSQL.
 	 *
 	 * @return Un EntityManagerFactory configurado para PostgreSQL.
 	 */
-	@Bean
+	/*@Bean
 	public EntityManagerFactory postgresqlEntityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lem = 
 				new LocalContainerEntityManagerFactoryBean();
@@ -45,5 +36,5 @@ public class DatabaseConfig {
 		lem.afterPropertiesSet();
 		
 		return lem.getObject();
-	}
+	}*/
 }
