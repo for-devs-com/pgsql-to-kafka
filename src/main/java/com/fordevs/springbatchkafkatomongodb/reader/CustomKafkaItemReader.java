@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka.reader;
+package com.fordevs.springbatchkafkatomongodb.reader;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

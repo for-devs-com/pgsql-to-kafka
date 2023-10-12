@@ -1,8 +1,8 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchkafkatomongodb.config;
 
 
-import com.fordevs.springbatchpostgresqltokafka.reader.CustomKafkaItemReader;
-import com.fordevs.springbatchpostgresqltokafka.writer.MongoDbItemWriter;
+import com.fordevs.springbatchkafkatomongodb.reader.CustomKafkaItemReader;
+import com.fordevs.springbatchkafkatomongodb.writer.MongoDbItemWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
