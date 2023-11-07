@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fordevs</groupId>
-    <artifactId>spring-batch-postgresql-to-kafka</artifactId>
+    <artifactId>spring-batch-postgresql-to-kafka-to-mongodb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-batch</name>
     <description>spring-batch</description>

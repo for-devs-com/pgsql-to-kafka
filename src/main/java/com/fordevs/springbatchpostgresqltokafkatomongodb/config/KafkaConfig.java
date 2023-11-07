@@ -1,7 +1,6 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpostgresqltokafkatomongodb.config;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
+import com.fordevs.springbatchpostgresqltokafkatomongodb.entity.postgresql.InputStudent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
