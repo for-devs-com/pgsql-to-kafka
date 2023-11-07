@@ -1,11 +1,11 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
-import com.fordevs.springbatchpostgresqltokafka.reader.CustomKafkaItemReader;
-import com.fordevs.springbatchpostgresqltokafka.services.ProducerService;
-import com.fordevs.springbatchpostgresqltokafka.writer.MongoDbItemWriter;
+import com.fordevs.springbatchpgsqltokafkatomongocrud.entity.postgresql.InputStudent;
+import com.fordevs.springbatchpgsqltokafkatomongocrud.reader.CustomKafkaItemReader;
+import com.fordevs.springbatchpgsqltokafkatomongocrud.services.ProducerService;
+import com.fordevs.springbatchpgsqltokafkatomongocrud.writer.MongoDbItemWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -16,12 +16,10 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JpaCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 import java.util.List;
 
 /**

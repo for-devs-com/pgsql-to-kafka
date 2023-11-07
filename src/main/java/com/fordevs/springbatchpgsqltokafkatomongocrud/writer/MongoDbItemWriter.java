@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka.writer;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.writer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;

@@ -1,6 +1,6 @@
-package com.fordevs.springbatchpostgresqltokafka.services;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.services;
 
-import com.fordevs.springbatchpostgresqltokafka.config.KafkaConfig;
+import com.fordevs.springbatchpgsqltokafkatomongocrud.config.KafkaConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

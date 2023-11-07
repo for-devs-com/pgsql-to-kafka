@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.config;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -39,7 +39,7 @@ public class DatabaseConfig {
 				new LocalContainerEntityManagerFactoryBean();
 		
 		lem.setDataSource(postgresdatasource());
-		lem.setPackagesToScan("com.fordevs.springbatchpostgresqltokafka.entity.postgresql");
+		lem.setPackagesToScan("com.fordevs.springbatchpgsqltokafkatomongocrud.entity.postgresql");
 		lem.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		lem.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		lem.afterPropertiesSet();

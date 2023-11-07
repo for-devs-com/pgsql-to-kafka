@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka;
+package com.fordevs.springbatchpgsqltokafkatomongocrud;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
@@ -8,12 +8,12 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableBatchProcessing
 @ComponentScan({
-        "com.fordevs.springbatchpostgresqltokafka.config",
-        "com.fordevs.springbatchpostgresqltokafka.entity.postgresql",
-        "com.fordevs.springbatchpostgresqltokafka.reader",
-        "com.fordevs.springbatchpostgresqltokafka.services",
-        "com.fordevs.springbatchpostgresqltokafka.writer",
-        "com.fordevs.springbatchpostgresqltokafka.listeners",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.config",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.entity.postgresql",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.reader",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.services",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.writer",
+        "com.fordevs.springbatchpgsqltokafkatomongocrud.listeners",
 })
 public class SpringBatchPostgresqlToKafkaApplication {
 

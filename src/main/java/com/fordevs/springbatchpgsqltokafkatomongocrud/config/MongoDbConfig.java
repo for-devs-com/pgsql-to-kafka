@@ -1,4 +1,4 @@
-package com.fordevs.springbatchpostgresqltokafka.config;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;

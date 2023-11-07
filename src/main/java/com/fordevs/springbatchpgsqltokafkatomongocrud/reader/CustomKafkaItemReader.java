@@ -1,6 +1,5 @@
-package com.fordevs.springbatchpostgresqltokafka.reader;
+package com.fordevs.springbatchpgsqltokafkatomongocrud.reader;
 
-import com.fordevs.springbatchpostgresqltokafka.entity.postgresql.InputStudent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.batch.item.ItemReader;
